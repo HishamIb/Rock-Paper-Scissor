@@ -3,20 +3,17 @@
 function getComputerChoice(){
     let Random_value = Math.random()
     let computerChoice;
-    if (Random_value > 0.1 && Random_value < 0.3){
+    if (Random_value > 0 && Random_value <= 0.3){
         computerChoice = "ROCK"
     }
-    else if(Random_value > 0.3 && Random_value < 0.6){
+    else if(Random_value > 0.3 && Random_value <= 0.6){
         computerChoice = "PAPER"
     }
-    else if(Random_value > 0.6 && Random_value < 0.9){
+    else if(Random_value > 0.6 && Random_value <= 1){
         computerChoice = "SCISSOR"
     }
     else if(Random_value == 0){
         computerChoice = "ROCK"
-    }
-    else{
-         computerChoice = "SCISSOR"
     }
     return computerChoice;
 }
