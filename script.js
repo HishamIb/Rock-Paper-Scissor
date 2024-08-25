@@ -1,3 +1,5 @@
+humanScore = 0;
+computerScore = 0;
 // Generate a random value on behalf of computer (Starting)
 function getComputerChoice(){
     let Random_value = Math.random()
@@ -21,3 +23,10 @@ function getComputerChoice(){
 }
 // Generate a random value on behalf of computer (Starting)
 
+// Player Input Their Choice  (Starting)
+function getHumanChoice(){
+    let HumanChoice = prompt("Type Rock , Paper or Scissor")
+    console.log(HumanChoice);
+    return HumanChoice;
+}
+// Player Input Their Choice  (Ending)
