@@ -1,4 +1,7 @@
-
+let displayRoundResult = document.querySelector(".result-display");
+let playerScoreDisplay = document.querySelector(".display-game-score")
+let playerWins = 0
+let machineWins = 0
 // Generate a random value on behalf of computer (Starting)
 function getComputerChoice(){
     let Random_value = Math.random()
@@ -17,26 +20,9 @@ function getComputerChoice(){
     }
     return computerChoice;
 }
-// Generate a random value on behalf of computer (Starting)
+// Generate a random value on behalf of computer (Ending)
 
-// Player Input Their Choice  (Starting)
-function getHumanChoice(){
-    let humanChoice = prompt("Type Rock , Paper or Scissor")
-    humanChoice = humanChoice.toUpperCase()
-    return humanChoice
-}
-// Player Input Their Choice  (Ending)
-
-function playGame(){
-    
-    let i = 0;
-    computerWinner = 0;
-    playerWinner = 0;
-    for(i=0;i<5;i++){
-         // Play a Round Code (Starts)
-         const humanEnteredValue = getHumanChoice()
-         const machineGeneratedValue = getComputerChoice()
-         playRound(humanEnteredValue, machineGeneratedValue)
+// code to play a round (starting)
          function playRound(humanChoice, computerChoice){
             let humanScore = 0;
             let computerScore = 0;
@@ -77,21 +63,50 @@ function playGame(){
                  }
              }
              if (humanScore > computerScore){
-                 console.log("You Won")
-                 playerWinner++
+                 displayRoundResult.textContent = "You Won"
+                 playerWins++
+
              }
              else{
-                 console.log("You Lost")
-                 computerWinner++
+                 displayRoundResult.textContent = "You Lost"
+                 machineWins++
              }
-             
-         }
-    }
-    if (playerWinner > computerWinner){
-        console.log("You Won The Game")
-    }
-    else{
-        console.log("You Lost The Game")
-    }
-}           
+             playerScoreDisplay.textContent = playerWins; 
+             if(machineWins == 5){
+                displayRoundResult.textContent = "Computer Wins"
+                playerScoreDisplay.textContent = 0;
+             }
+             else if(playerWins == 5){
+                displayRoundResult.textContent = "Player Won"
+                playerScoreDisplay.textContent = 0;
+             }
+        }
 
+// code to play a round (ending)
+
+// button feature Ui added (starting)
+let buttonRock = document.querySelector(".rock-button") 
+let buttonPaper = document.querySelector(".paper-button")
+let buttonScissor = document.querySelector(".scissor-button")
+
+buttonRock.addEventListener("click", ()=>{
+     let humanChoice = "ROCK"
+     let humanEnteredChoice = humanChoice
+     let machineGeneratedValue = getComputerChoice()
+     playRound(humanEnteredChoice, machineGeneratedValue)
+})
+
+buttonPaper.addEventListener("click", ()=>{
+    let humanChoice = "PAPER"
+    let humanEnteredChoice = humanChoice
+    let machineGeneratedValue = getComputerChoice()
+    playRound(humanEnteredChoice, machineGeneratedValue)
+})
+
+buttonScissor.addEventListener("click", ()=>{
+    let humanChoice = "SCISSOR"
+    let humanEnteredChoice = humanChoice
+    let machineGeneratedValue = getComputerChoice()
+    playRound(humanEnteredChoice, machineGeneratedValue)
+})
+// button feature Ui added (ending)
